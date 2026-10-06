@@ -1,0 +1,222 @@
+/* --- ESTILOS GENERALES Y LAYOUT --- */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #f8faf6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333;
+}
+
+/* --- BARRA LATERAL (DESKTOP) --- */
+.options-aside-panel-container {
+  width: 280px;
+  min-width: 280px;
+  background-color: #ffffff;
+  border-right: 1px solid #e2e8d7;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.03);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* --- CABECERA MÓVIL / TOGGLE --- */
+.mobile-bar-header {
+  display: none; /* Se activa en móvil */
+}
+
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  background: #262d1e;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  box-shadow: 0 2px 6px rgba(38, 45, 30, 0.2);
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* --- CONTENIDO DEL MENÚ --- */
+.options {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #e2e8d7;
+}
+
+.company-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #262d1e;
+}
+
+.company-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #262d1e;
+  margin: 0;
+}
+
+/* --- BOTONES Y LISTAS DE OPCIONES --- */
+.business-options, 
+.miscellaneous-options {
+  margin-bottom: 20px;
+}
+
+.options ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Botones Principales (Verde Oscuro como en la imagen) */
+.bopt {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #262d1e; /* Tono oscuro institucional */
+  color: #ffffff;
+  border: 1px solid #262d1e;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.bopt:hover {
+  background-color: #3b452e;
+  border-color: #3b452e;
+  transform: translateX(4px);
+}
+
+/* Botones Misceláneos (Verde Claro como en la imagen) */
+.mopt {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #eaf0e3; /* Tono verde claro suave */
+  color: #262d1e;
+  border: 1px solid #d5e0cb;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.mopt:hover {
+  background-color: #dbe6d1;
+  transform: translateX(4px);
+}
+
+/* --- ADAPTABILIDAD RESPONSIVA (MÓVIL Y TABLET) --- */
+
+@media (max-width: 850px) {
+  .app-container {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  /* La barra lateral pasa a ser una barra superior compacta */
+  .options-aside-panel-container {
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e2e8d7;
+    z-index: 1000;
+  }
+
+  /* Barra superior visible con Logo + Botón Hamburguesa */
+  .mobile-bar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background-color: #ffffff;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Ocultamos la lista de opciones por defecto */
+  .options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 2px solid #262d1e;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    padding: 16px 20px 24px;
+    max-height: 80vh;
+  }
+
+  /* Clase que abre el menú en móvil cuando se pulsa el botón */
+  .options.open,
+  .optionsOpen {
+    display: flex;
+  }
+
+  .header {
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+  }
+
+  .bopt:hover, 
+  .mopt:hover {
+    transform: none; /* Desactiva el desplazamiento lateral en táctil */
+  }
+}
+
+@media (max-width: 480px) {
+  .company-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .company-name {
+    font-size: 1.1rem;
+  }
+
+  .bopt, .mopt {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+}
