@@ -7,14 +7,23 @@ export const businessNavItems = [
     {id: "listarEmpleados", label: "Listar Empleados"}
 ]
 
-export const miscNavItems =[
-    {id: "settings", label: "Ajustes"},
-    {id: "profile", label: "Perfil"},
-    {id: "search", label: "Buscar"},
-    {id: "help", label: "Ayuda"}
-]
+export const enum Tabs{
+    editarProductos = "editarProductos",
+    addProductos = "addProductos",
+    listarProductos = "listarProductos",
+    empleados = "empleados",
+    editarEmpleados = "editarEmpleados",
+    listarEmpleados = "listarEmpleados"
+}
 
-
+export const TableHeads = {
+    codigo: "Código",
+    categoria: "Categoria",
+    nombre: "Nombre",
+    marca: "Marca",
+    precioVenta: "Precio Venta",
+    stock: "Stock"
+} as const;
 export var prod =[
   // MAT. CONSTRUCCIÓN
   { codigo: "MC001", categoria: "Mat. Construcción", subcategoria: "Cementos", nombre: "Cemento Polpaico gris 25 kg", marca: "Polpaico", unidad: "Saco", precioCompra: 3200, precioVenta: 5990, stock: 80, stockMinimo: 20},

@@ -1,5 +1,3 @@
-import { prod } from "../components/admin_components/Constants";
-
-export const RestarCantidad = () =>{
+export const RestarCantidad = (q:number) =>{
     
 }
