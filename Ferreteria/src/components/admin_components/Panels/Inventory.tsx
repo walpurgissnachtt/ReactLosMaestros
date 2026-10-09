@@ -15,7 +15,6 @@ function Panel() {
         return <p className="no-data">No hay productos registrados en el inventario.</p>;
     }
     return (
-        /* Envolvemos la tabla en el contenedor que controla el scroll */
         <div className="table-scroll-container">
             <table className="inventory-table">
                 <thead>
