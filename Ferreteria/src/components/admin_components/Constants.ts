@@ -37,7 +37,6 @@ export const EmployeeTableHeads = {
   estado: "Estado"
 } as const;
 
-
 export var employees = [
   { rut: "19.876.543-2", nombre: "Carlos Soto", cargo: "Vendedor", correo:"khadhia20@gmail.com", telefono: "+56912345678", estado: "Activo" },
   { rut: "18.123.456-7", nombre: "Ana Gómez", cargo: "Cajera",correo:"tomas45@gmail.com", telefono: "+56987654321", estado: "Activo" }

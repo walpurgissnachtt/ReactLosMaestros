@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { prod, TableHeads } from "../Constants";
-
+import { TableHeads } from "../Constants";
 
 function Panel() {
     const [render, setRender] = useState(false);
+    const  [prod, setProd] = useState(()=> {
+        const prodString = localStorage.getItem('prod');
+        return prodString ? JSON.parse(prodString) : [];
+    })
     useEffect(() => {
         if (prod && prod.length > 0) {
             setRender(true);
@@ -11,6 +14,7 @@ function Panel() {
             setRender(false)
         }
     }, [prod])
+
     if (!render) {
         return <p className="no-data">No hay productos registrados en el inventario.</p>;
     }

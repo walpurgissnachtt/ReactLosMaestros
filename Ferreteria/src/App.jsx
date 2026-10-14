@@ -1,18 +1,27 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home  from './pages/Home'
-import Notes from './pages/Notes'
-import ExampleLong from './pages/ExampleLong'
 import MainLayout from './MainLayout'
 import Dashboard from './components/admin_components/Dashboard'
-
+import { useEffect } from 'react'
+import { prod } from './components/admin_components/Constants'
+import { employees } from './components/admin_components/Constants'
 function App() {
+  //se inicia el mockup para los datos
+  useEffect(() =>{
+    const prod_data = localStorage.getItem("prod")
+    const employee_data = localStorage.getItem("employees")
+    if(!prod_data){
+      localStorage.setItem("prod",JSON.stringify(prod))
+    }
+    if(!employee_data){
+      localStorage.setItem("employees", JSON.stringify(employees))
+    }
+  },[])
   return (
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
             <Route path='/home' element={<Home />}/>
-            <Route path='/notes' element={<Notes />}/>
-            <Route path='/exampleLong' element={<ExampleLong />}/>
           </Route>
           <Route>
             <Route path='/admin' element={<Dashboard />}/>
