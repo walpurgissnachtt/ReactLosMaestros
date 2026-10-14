@@ -8,6 +8,7 @@ export default function MainLayout() {
         <Link to="/notes">Notes!</Link>
         <Link to="/exampleLong">Example!</Link>
         <Link to="/admin">Admin site</Link>
+        <Link to="/login">Login</Link>
       </nav>
       <Outlet />
     </>
