@@ -4,7 +4,8 @@ import AddEmployees from "./AddEmployees";
 import { Tabs } from "../Constants";
 import EditEmployee from "./EditarEmpleado";
 import DeleteEmployee from "./DeleteEmployee";
-
+import LoadAddProductPanel from "./AddProduct";
+import LoadEditPanel from "./EditProduct";
 interface SwitchPanelProps {
     id: string;
     empleados: any[];
@@ -29,7 +30,10 @@ export const SwitchPanel = ({ id, empleados, onAgregarEmpleado, onEditarEmpleado
 
         case Tabs.eliminarEmpleados:
             return <DeleteEmployee empleados={empleados} onEliminar={onEliminarEmpleado} />;
-
+        case Tabs.addProductos:
+            return <LoadAddProductPanel/>
+        case Tabs.editarProductos:
+            return < LoadEditPanel />
         default:
             return null;
     }

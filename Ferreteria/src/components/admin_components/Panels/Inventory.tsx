@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 import { TableHeads } from "../Constants";
 
+interface Product {
+    codigo: string;
+    categoria?: string;
+    nombre: string;
+    marca?: string;
+    precioVenta: number;
+    stock: number;
+}
+
 function Panel() {
-    const [render, setRender] = useState(false);
-    const  [prod, setProd] = useState(()=> {
+    const [render, setRender] = useState<boolean>(false);
+    const  [prod, setProd] = useState<Product[]>(()=> {
         const prodString = localStorage.getItem('prod');
-        return prodString ? JSON.parse(prodString) : [];
+        return prodString ? JSON.parse(prodString) as Product[] : [];
     })
     useEffect(() => {
         if (prod && prod.length > 0) {
@@ -18,6 +27,7 @@ function Panel() {
     if (!render) {
         return <p className="no-data">No hay productos registrados en el inventario.</p>;
     }
+    console.log(prod)
     return (
         <div className="table-scroll-container">
             <table className="inventory-table">

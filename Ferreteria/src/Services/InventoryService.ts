@@ -1,54 +1,69 @@
 
-interface Product { 
-    id: number;
-    name: string;
-    description: string;
-    price: number;
-    quantity: number;
+interface Product {
+    codigo: string;
+    categoria?: string;
+    nombre: string;
+    marca?: string;
+    precioVenta: number;
+    stock: number;
 }
 
 //mockup para simular la actualización del precio de un producto en el inventario
-function updatePrice(id: number, newPrice: number) : boolean{
+export function updatePrice(id: string, newPrice: number) : boolean{
+    alert("entrando en update price!")
     if(isNaN(newPrice) || newPrice <=0){
         return false;
     }
-    if(isNaN(id) || id <0){
+    if(!id){
         return false;
     }
-
+    alert("validaciones pasadas!")
     const getProducts = localStorage.getItem('prod');
     if(getProducts){
-        const products = JSON.parse(getProducts);
-        const productIndex = products.findIndex((p: Product) => p.id === id);
+        alert("entrando en if(getProducts)")
+        const products: Product[] = JSON.parse(getProducts);
+        const productIndex = products.findIndex((p: Product) => p.codigo === id);
         if(productIndex !== -1){
-            products[productIndex].price = newPrice;
+            products[productIndex].precioVenta = newPrice;
             localStorage.setItem('prod', JSON.stringify(products));
+            alert("saliendo de update. todo completado!")
             return true;
+        }else{
+            alert("saliendo de update. todo fallido!")
+            return false;
         }
-        return false
+
+    }else{
+        alert("saliendo de update. todo fallido 2!")
+        return false;
     }
 }
 
 
 //mockup para simular la validacion de un producto antes de agregarlo al inventario
-function validateProduct(product: Product): boolean {
-    if (!product.name || !product.description || product.price <= 0 || product.quantity < 0 || isNaN(product.price) || isNaN(product.quantity)) {
+function validateProductData(p:Product):boolean{
+    if(!p.nombre || !p.categoria || !p.marca || !p.codigo){
         return false;
     }
-}   
+    if(isNaN(p.precioVenta) || p.precioVenta < 0){
+        return false
+    }
+    if(isNaN(p.stock) || p.stock < -1 ){
+        return false;
+    }
+    return true;
+}
 //mockup para simular el agregado de un producto al inventario
 export default function AddProduct({product} : {product: Product}) {
-    if(validateProduct(product)) {          
-        const getProducts = localStorage.getItem('prod');
-        const products = getProducts ? JSON.parse(getProducts) : [];
-        const newProduct = {
-            id: product.id,
-            name: product.name,
-            description: product.description,
-            price: product.price,
-            quantity: product.quantity
-        };
-        products.push(newProduct);
-        localStorage.setItem('prod', JSON.stringify(products));
+    try {
+        if(validateProductData(product)){
+            const getProducts = localStorage.getItem('prod');
+            const products = getProducts ? JSON.parse(getProducts) : [];
+            products.push(product);
+            localStorage.setItem('prod', JSON.stringify(products));
+            console.log(products) 
+        }
+    } catch (error) {
+        alert(error)
     }
 }
