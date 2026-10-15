@@ -26,18 +26,19 @@ describe('<ProductoCard />', () => {
   });
 
   it('el botón ejecuta alAgregar con el código del producto', () => {
-    const alAgregar = jasmine.createSpy('alAgregar');
+    const llamadas = []; // espía simple: guarda los argumentos de cada llamada
+    const alAgregar = (...args) => llamadas.push(args);
     const el = renderizar(<ProductoCard producto={producto} alAgregar={alAgregar} />);
     const boton = q('button', el);
     expect(boton.textContent).toBe('Agregar al carrito');
     clic(boton);
-    expect(alAgregar).toHaveBeenCalledOnceWith('HM001');
+    expect(llamadas).toEqual([['HM001']]);
   });
 
   it('sin stock muestra "Sin stock" y deshabilita el botón', () => {
     const el = renderizar(<ProductoCard producto={{ ...producto, stock: 0 }} alAgregar={() => {}} />);
     expect(q('button', el).textContent).toBe('Sin stock');
-    expect(q('button', el).disabled).toBeTrue();
+    expect(q('button', el).disabled).toBe(true);
   });
 
   it('con stock bajo el mínimo marca el producto como crítico', () => {
@@ -50,3 +51,4 @@ describe('<ProductoCard />', () => {
     expect(q('a', el).getAttribute('href')).toBe('/productos/HM001');
   });
 });
+

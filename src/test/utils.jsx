@@ -100,7 +100,18 @@ export const boton = (texto, raiz = document) =>
   qa('button, a', raiz).find((b) => b.textContent.trim() === texto);
 export const botonQueContiene = (texto, raiz = document) =>
   qa('button, a', raiz).find((b) => b.textContent.includes(texto));
+// jsdom (Vitest) no trae CSS.escape; se usa una versión de respaldo
+const escaparId = (id) =>
+  globalThis.CSS?.escape ? CSS.escape(id) : id.replace(/([^\w-])/g, '\\$1');
+
 export const campo = (etiqueta, raiz = document) => {
   const label = qa('label', raiz).find((l) => l.textContent.trim() === etiqueta);
-  return label ? raiz.querySelector(`#${CSS.escape(label.htmlFor)}`) : null;
+  return label ? raiz.querySelector(`#${escaparId(label.htmlFor)}`) : null;
 };
+
+// Función espía sin depender de Jasmine ni de Vitest: guarda los argumentos de cada llamada
+export function crearEspia() {
+  const espia = (...args) => espia.llamadas.push(args);
+  espia.llamadas = [];
+  return espia;
+}

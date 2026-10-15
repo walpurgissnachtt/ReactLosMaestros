@@ -19,8 +19,11 @@ const iniciarSesionAdmin = () =>
 const guardado = () => JSON.parse(localStorage.getItem(CLAVES.tienda));
 const titulo = () => q('h1')?.textContent;
 
-// NOTA: las pruebas marcadas con xit dependen del panel de administración (ruta /admin),
-// que está desarrollando otro integrante. Cuando se integre, cambiar xit por it.
+// Funciona con Jasmine (xit) y con Vitest (it.skip)
+const pendiente = globalThis.xit ?? it.skip;
+
+// NOTA: las pruebas marcadas con pendiente dependen del panel de administración (ruta /admin),
+// que está desarrollando el leo. Cuando se integre, cambiar pendiente( por it(.
 describe('navegación y acceso', () => {
   afterEach(limpiar);
 
@@ -36,7 +39,7 @@ describe('navegación y acceso', () => {
     expect(titulo()).toBe('Página no encontrada');
   });
 
-  xit('redirige /admin al login, rechaza una clave incorrecta y permite entrar y salir', async () => {
+  pendiente('redirige /admin al login, rechaza una clave incorrecta y permite entrar y salir', async () => {
     renderizarApp('/admin');
     expect(titulo()).toBe('Inicio de sesión administrador');
 
@@ -55,7 +58,7 @@ describe('navegación y acceso', () => {
     expect(localStorage.getItem(CLAVES.sesion)).toBeNull();
   });
 
-  xit('restaura la sesión al volver a abrir la aplicación', () => {
+  pendiente('restaura la sesión al volver a abrir la aplicación', () => {
     iniciarSesionAdmin();
     renderizarApp('/admin');
     expect(titulo()).toBe('Administración de productos');
@@ -93,7 +96,7 @@ describe('catálogo y detalle', () => {
       JSON.stringify({ productos: [{ ...productosIniciales[0], stock: 0 }], carrito: [] }),
     );
     renderizarApp('/productos');
-    expect(boton('Sin stock').disabled).toBeTrue();
+    expect(boton('Sin stock').disabled).toBe(true);
   });
 
   it('abre el detalle por la URL, agrega varias unidades y muestra productos sugeridos', () => {
@@ -182,7 +185,7 @@ describe('administración y contacto', () => {
     escribir(campo('Stock mínimo', dialogo), '1');
   }
 
-  xit('crea y edita un producto mediante el modal', async () => {
+  pendiente('crea y edita un producto mediante el modal', async () => {
     iniciarSesionAdmin();
     renderizarApp('/admin');
     clic(boton('Nuevo producto'));
@@ -195,7 +198,7 @@ describe('administración y contacto', () => {
 
     clic(botonQueContiene('Editar Escalera de aluminio'));
     await esperar(() => q('[role=dialog]'));
-    expect(campo('Código', q('[role=dialog]')).disabled).toBeTrue();
+    expect(campo('Código', q('[role=dialog]')).disabled).toBe(true);
     escribir(campo('Precio de venta', q('[role=dialog]')), '40000');
     clic(boton('Guardar producto'));
     await esperar(() => !q('[role=dialog]'));
@@ -203,7 +206,7 @@ describe('administración y contacto', () => {
     expect(fila.textContent).toContain('40.000');
   });
 
-  xit('muestra errores del formulario y rechaza un código repetido', async () => {
+  pendiente('muestra errores del formulario y rechaza un código repetido', async () => {
     iniciarSesionAdmin();
     renderizarApp('/admin');
     clic(boton('Nuevo producto'));
@@ -216,7 +219,7 @@ describe('administración y contacto', () => {
     expect(q('[role=dialog]').textContent).toContain('Ya existe un producto con ese código.');
   });
 
-  xit('cancela y confirma la eliminación, retirando el producto del carrito', async () => {
+  pendiente('cancela y confirma la eliminación, retirando el producto del carrito', async () => {
     iniciarSesionAdmin();
     localStorage.setItem(
       CLAVES.tienda,
