@@ -1,0 +1,15 @@
+/* Con 8 enlaces el menú debe caber y no cortar "Ofertas" ni "Contacto" en pantallas medianas */
+@media (min-width: 992px) and (max-width: 1399.98px) {
+  .navbar-ferreteria .navbar-collapse {
+    flex-wrap: wrap;
+  }
+
+  .navbar-ferreteria .nav-link {
+    padding: 0.4rem 0.55rem;
+    font-size: 0.92rem;
+  }
+
+  .navbar-ferreteria .navbar-brand {
+    font-size: 1rem;
+  }
+}
