@@ -27,7 +27,7 @@ export const Login: React.FC = () => {
             if(userFound.rol==='admin'){
                 navigate('/admin')
             }else{
-                navigate("/home")
+                navigate("/")
             }
         }else{
             setError('Credenciales invalidas');
