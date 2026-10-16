@@ -1,41 +1,41 @@
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home  from './pages/Home'
 import MainLayout from './MainLayout'
-import Dashboard from './components/admin_components/Dashboard'
 import { useEffect } from 'react'
-import { prod } from './components/admin_components/Constants'
-import { employees } from './components/admin_components/Constants'
-
-import Layout from './components/Layout.jsx';
-import Inicio from './pages/pages.pagina/Inicio.jsx';
-import Productos from './pages/pages.pagina/Productos.jsx';
-import DetalleProducto from './pages/pages.pagina/DetalleProducto.jsx';
-import Carrito from './pages/pages.pagina/Carrito.jsx';
-import Checkout from './pages/pages.pagina/Checkout.jsx';
-import PagoResultado from './pages/pages.pagina/PagoResultado.jsx';
-import Ofertas from './pages/pages.pagina/Ofertas.jsx';
-import Nosotros from './pages/pages.pagina/Nosotros.jsx';
-import Contacto from './pages/pages.pagina/Contacto.jsx';
-import NoEncontrada from './pages/pages.pagina/NoEncontrada.jsx';
-
+import { prod, employees } from './components/admin_components/Constants'
+import Notes from './pages/Notes'
+import ExampleLong from './pages/ExampleLong'
+import Admin from './pages/Admin'
+import { Login } from './pages/Login'
+import ProtectedRoute from './components/ProtectedRoute'
+import Layout from './components/Layout.jsx'
+import Inicio from './pages/pages.pagina/Inicio.jsx'
+import Productos from './pages/pages.pagina/Productos.jsx'
+import DetalleProducto from './pages/pages.pagina/DetalleProducto.jsx'
+import Carrito from './pages/pages.pagina/Carrito.jsx'
+import Checkout from './pages/pages.pagina/Checkout.jsx'
+import PagoResultado from './pages/pages.pagina/PagoResultado.jsx'
+import Ofertas from './pages/pages.pagina/Ofertas.jsx'
+import Nosotros from './pages/pages.pagina/Nosotros.jsx'
+import Contacto from './pages/pages.pagina/Contacto.jsx'
+import NoEncontrada from './pages/pages.pagina/NoEncontrada.jsx'
 
 export default function App() {
   // Se inicia el mockup para los datos del admin
   useEffect(() => {
-    const prod_data = localStorage.getItem("prod");
-    const employee_data = localStorage.getItem("employees");
-    if (!prod_data) {
-      localStorage.setItem("prod", JSON.stringify(prod));
+    const prodData = localStorage.getItem('prod')
+    const employeeData = localStorage.getItem('employees')
+    if (!prodData) {
+      localStorage.setItem('prod', JSON.stringify(prod))
     }
-    if (!employee_data) {
-      localStorage.setItem("employees", JSON.stringify(employees));
+    if (!employeeData) {
+      localStorage.setItem('employees', JSON.stringify(employees))
     }
-  }, []);
+  }, [])
 
   return (
     <BrowserRouter>
       <Routes>
-        {}
         <Route path="/" element={<Layout />}>
           <Route index element={<Inicio />} />
           <Route path="productos" element={<Productos />} />
@@ -49,11 +49,21 @@ export default function App() {
           <Route path="pago-error" element={<PagoResultado tipo="error" />} />
         </Route>
         <Route element={<MainLayout />}>
-          <Route path="/home" element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/notes' element={<Notes />} />
+          <Route path='/exampleLong' element={<ExampleLong />} />
+          <Route path='/login' element={<Login />} />
         </Route>
-        <Route path="/admin" element={<Dashboard />} />
+        <Route
+          path='/admin'
+          element={
+            <ProtectedRoute allowedRole='admin'>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<NoEncontrada />} />
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
