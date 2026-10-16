@@ -841,16 +841,17 @@ textarea.input-estilo {
 /* Con 8 enlaces el menú debe caber y no cortar "Ofertas" ni "Contacto" en pantallas medianas */
 @media (min-width: 992px) and (max-width: 1399.98px) {
   .navbar-ferreteria .navbar-collapse {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   .navbar-ferreteria .nav-link {
-    padding: 0.4rem 0.55rem;
-    font-size: 0.92rem;
+    padding: 0.4rem 0.45rem;
+    font-size: 0.88rem;
   }
 
   .navbar-ferreteria .navbar-brand {
-    font-size: 1rem;
+    gap: 0.5rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -1198,10 +1199,6 @@ textarea.input-estilo {
   font-weight: 700;
 }
 
-.pagina-productos {
-  background-color: #c5caa3;
-}
-
 .pagina-productos .form-label {
   color: #3d2d1d;
   font-weight: 700;
@@ -1282,10 +1279,6 @@ textarea.input-estilo {
   padding: 15px 20px;
 }
 
-.navbar-ferreteria a {
-  padding: 15px 20px;
-}
-
 .logo a {
   display: flex;
   align-items: center; 
@@ -1303,42 +1296,6 @@ textarea.input-estilo {
   color: white; 
   font-size: 26px;
   font-weight: bold;
-}
-
-.navbar-ferreteria {
-  background-color: #272a18;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 100000;
-  padding: 25px 0;
-  display: flex;
-  align-items: center; 
-  justify-content: flex-start;
-}
-
-.navbar-ferreteria ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.navbar-ferreteria ul li {
-  margin: 0 5px;
-}
-
-.navbar-ferreteria ul li a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  padding: 8px 10px;
-}
-
-.navbar-ferreteria ul li a:hover {
-  background-color: #5c6138;
-  border-radius: 5px;
 }
 
 .search-container {
