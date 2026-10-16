@@ -46,6 +46,9 @@ export default function Header() {
               <Nav.Link as={NavLink} to="/contacto" eventKey="contacto">
                 Contacto
               </Nav.Link>
+              <Nav.Link as={NavLink} to="/login" eventKey="login">
+                Iniciar Sesión
+              </Nav.Link>
               {/* Muestra la cantidad de unidades que hay en el carrito. */}
               <Nav.Link as={NavLink} to="/carrito" eventKey="carrito">
                 Carrito ({resumenCarrito(estado).unidades})
