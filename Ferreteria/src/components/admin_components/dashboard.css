@@ -171,7 +171,7 @@ form input:focus, #edit-prod input:focus, #edit-emp input:focus {
 }
 
 /* --- BOTONES DE ACCIÓN (GUARDAR / EDITAR) --- */
-button[type="button"], #updated-prod-button, #update-emp-button, #btn-guardar-empleado, #save-product-button {
+.app-container button[type="button"], #updated-prod-button, #update-emp-button, #btn-guardar-empleado, #save-product-button {
   background-color: #272a18;
   color: white;
   border: none;
@@ -185,11 +185,11 @@ button[type="button"], #updated-prod-button, #update-emp-button, #btn-guardar-em
   margin-top: 10px;
 }
 
-button[type="button"]:hover, #updated-prod-button:hover, #update-emp-button:hover, #btn-guardar-empleado:hover, #save-product-button:hover {
+.app-container button[type="button"]:hover, #updated-prod-button:hover, #update-emp-button:hover, #btn-guardar-empleado:hover, #save-product-button:hover {
   background-color: #3f4428;
 }
 
-button[type="button"]:active {
+.app-container button[type="button"]:active {
   transform: scale(0.98);
 }
 
@@ -317,7 +317,7 @@ tr:hover {
     font-size: 0.85rem;
   }
 
-  button[type="button"], #updated-prod-button, #update-emp-button, #btn-guardar-empleado, #save-product-button {
+  .app-container button[type="button"], #updated-prod-button, #update-emp-button, #btn-guardar-empleado, #save-product-button {
     padding: 10px 14px;
     font-size: 0.9rem;
   }
@@ -377,4 +377,3 @@ tr:hover {
 .btn-cancelar:hover {
   background-color: #d32f2f;
 }
-
