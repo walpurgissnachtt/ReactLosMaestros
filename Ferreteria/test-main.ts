@@ -1,4 +1,4 @@
-import './src/Services/InventoryServices.spec.ts';
+import './src/Services/InventoryServices.spec.tsx';
 import './src/components/admin_components/Panels/AddEmployees.spec.tsx';
 import './src/components/admin_components/Panels/AddProduct.spec.tsx';
 import './src/components/admin_components/Panels/DeleteEmployee.spec.tsx';
