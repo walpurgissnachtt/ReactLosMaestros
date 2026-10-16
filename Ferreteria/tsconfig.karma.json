@@ -1,0 +1,17 @@
+
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "types": ["jasmine", "node"],
+    "isolatedModules": true
+  },
+  "include": [
+    "test-main.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ]
+}
