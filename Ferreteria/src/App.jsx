@@ -1,10 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home  from './pages/Home'
 import MainLayout from './MainLayout'
 import { useEffect } from 'react'
 import { prod, employees } from './components/admin_components/Constants'
-import Notes from './pages/Notes'
-import ExampleLong from './pages/ExampleLong'
 import Admin from './pages/Admin'
 import { Login } from './pages/Login'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -49,9 +46,6 @@ export default function App() {
           <Route path="pago-error" element={<PagoResultado tipo="error" />} />
         </Route>
         <Route element={<MainLayout />}>
-          <Route path='/home' element={<Home />} />
-          <Route path='/notes' element={<Notes />} />
-          <Route path='/exampleLong' element={<ExampleLong />} />
           <Route path='/login' element={<Login />} />
         </Route>
         <Route
