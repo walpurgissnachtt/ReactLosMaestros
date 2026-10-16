@@ -4,17 +4,43 @@ export const businessNavItems = [
     {id: "listarProductos", label: "Listar Productos"},
     {id: "empleados", label: "Agregar Empleado"},
     {id: "editarEmpleados", label: "Editar Empleados"},
-    {id: "listarEmpleados", label: "Listar Empleados"}
+    {id: "listarEmpleados", label: "Listar Empleados"},
+    {id: "eliminarEmpleados", label: "Eliminar Empleado"}
 ]
 
-export const miscNavItems =[
-    {id: "settings", label: "Ajustes"},
-    {id: "profile", label: "Perfil"},
-    {id: "search", label: "Buscar"},
-    {id: "help", label: "Ayuda"}
-]
+export const enum Tabs{
+    editarProductos = "editarProductos",
+    addProductos = "addProductos",
+    listarProductos = "listarProductos",
+    empleados = "empleados",
+    editarEmpleados = "editarEmpleados",
+    listarEmpleados = "listarEmpleados",
+    eliminarEmpleados = "eliminarEmpleados"
+}
+
+export const TableHeads = {
+    codigo: "Código",
+    categoria: "Categoria",
+    nombre: "Nombre",
+    marca: "Marca",
+    precioVenta: "Precio Venta",
+    stock: "Stock"
+} as const;
 
 
+export const EmployeeTableHeads = {
+  rut: "RUT",
+  nombre: "Nombre",
+  cargo: "Cargo",
+  correo:"Correo",
+  telefono: "Teléfono",
+  estado: "Estado"
+} as const;
+
+export var employees = [
+  { rut: "19.876.543-2", nombre: "Carlos Soto", cargo: "Vendedor", correo:"khadhia20@gmail.com", telefono: "+56912345678", estado: "Activo" },
+  { rut: "18.123.456-7", nombre: "Ana Gómez", cargo: "Cajera",correo:"tomas45@gmail.com", telefono: "+56987654321", estado: "Activo" }
+];
 export var prod =[
   // MAT. CONSTRUCCIÓN
   { codigo: "MC001", categoria: "Mat. Construcción", subcategoria: "Cementos", nombre: "Cemento Polpaico gris 25 kg", marca: "Polpaico", unidad: "Saco", precioCompra: 3200, precioVenta: 5990, stock: 80, stockMinimo: 20},

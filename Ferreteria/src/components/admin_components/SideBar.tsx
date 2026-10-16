@@ -1,4 +1,4 @@
-import { businessNavItems, miscNavItems } from "./Constants";
+import { businessNavItems } from "./Constants";
 import { useState } from "react";
 import './dashboard.css';
 interface SideBarProps {
@@ -12,7 +12,7 @@ export default function SideBar({logo,title,onSelectOption}: SideBarProps){
     return(
         <aside className="options-aside-panel-container">
             <button 
-            className="menu-toggle" 
+            className={`menu-toggle ${isOpen ? 'open' : ''}`} 
             type="button" 
             aria-label="Abrir menú" 
             aria-expanded={isOpen}
@@ -22,7 +22,7 @@ export default function SideBar({logo,title,onSelectOption}: SideBarProps){
                 <span></span>
                 <span></span>
             </button>
-            <nav className="options"
+            <nav className={`options ${isOpen ? 'open' : ''}`}
             aria-label="Business Navigation">
                 <div className="header">
                     <img src={logo} alt="icon" className="company-icon"/> 
@@ -33,18 +33,6 @@ export default function SideBar({logo,title,onSelectOption}: SideBarProps){
                         {businessNavItems.map((item) =>(
                             <li key={item.id}>
                                 <button className="bopt" id={item.id} type="button" onClick={()=>onSelectOption(item.id)}>
-                                    {item.label}
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                <div className="miscellaneous-options">
-                    <ul>
-                        {miscNavItems.map((item)=>(
-                            <li key={item.id}>
-                                <button className="mopt" id={item.id} type="button" onClick={()=>onSelectOption(item.id)}>
                                     {item.label}
                                 </button>
                             </li>
